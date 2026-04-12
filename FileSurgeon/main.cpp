@@ -3,6 +3,7 @@
 #include <QQmlContext>
 #include "pemodel.h"
 #include "fileprocessor.h"
+#include <QQuickStyle>
 
 int main(int argc, char *argv[]) {
     QGuiApplication app(argc, argv);
@@ -11,6 +12,7 @@ int main(int argc, char *argv[]) {
     FileProcessor backend(&peModel);
 
     QQmlApplicationEngine engine;
+    QQuickStyle::setStyle("Basic");
 
     // Соединяем сигнал ошибки, чтобы приложение закрывалось, если QML не загрузился
     QObject::connect(

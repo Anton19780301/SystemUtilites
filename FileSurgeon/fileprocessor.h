@@ -20,6 +20,9 @@ public:
     Q_INVOKABLE void removeSection(const QModelIndex &index);
     Q_INVOKABLE void removeCurrentSection();
 
+signals:
+    void statusMessage(const QString &message);
+
 private:
     PEModel *m_model;
     QString m_currentFilePath;

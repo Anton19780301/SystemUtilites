@@ -5,7 +5,7 @@ project(FileSurgeon VERSION 0.1 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17) # WinAPI и Qt6 хорошо дружат с 17 стандартом
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Quick)
+find_package(Qt6 REQUIRED COMPONENTS Quick QuickControls2)
 
 qt_standard_project_setup()
 
@@ -19,12 +19,16 @@ qt_add_executable(appFileSurgeon
 qt_add_qml_module(appFileSurgeon
     URI FileSurgeon
     QML_FILES Main.qml
+    QML_FILES Notification.qml
+    QML_FILES Style.qml
+    QML_FILES TreeDelegate.qml
 )
 
 # Для работы с некоторыми функциями WinAPI иногда нужно явно линковать user32 или shell32,
 # но для IMAGE_DOS_HEADER (kernel32) это не обязательно.
 target_link_libraries(appFileSurgeon
     PRIVATE Qt6::Quick
+    PRIVATE Qt6::QuickControls2
 )
 
 set_target_properties(appFileSurgeon PROPERTIES

@@ -172,7 +172,7 @@ void FileProcessor::saveChanges(const QString &content) {
     }
     file.close();
     node->data = newContent;
-    qDebug() << "Готово!";
+    emit statusMessage("Файл сохранен. Бэкап создан.");
 }
 
 FileProcessor::FileProcessor(PEModel *model, QObject *parent)
@@ -190,6 +190,7 @@ bool FileProcessor::openFile(const QString &filePath) {
     file.close();
 
     parsePE(data);
+    emit statusMessage("Файл успешно открыт: " + file.fileName());
     return true;
 }
 
