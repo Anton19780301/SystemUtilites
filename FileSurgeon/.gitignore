@@ -1,0 +1,31 @@
+# Сборка и временные файлы Qt Creator
+build*/
+*.user
+*.user.*
+.qtc_clangd/
+
+# MSVC файлы
+*.obj
+*.pdb
+*.ilk
+*.exe
+*.dll
+*.lib
+*.exp
+*.suo
+*.user
+*.filters
+*.vcxproj
+*.sln
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+cmake_install.cmake
+install_manifest.txt
+Makefile
+
+# Прочее
+*.bak
+.DS_Store

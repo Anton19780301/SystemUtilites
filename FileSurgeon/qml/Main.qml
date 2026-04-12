@@ -3,7 +3,7 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import QtQuick.Dialogs
 import QtCore
-import FileSurgeon
+import FileSurgeon 1.0
 
 ApplicationWindow {
     id: window
@@ -36,24 +36,23 @@ ApplicationWindow {
 
         // Панель кнопок
         RowLayout {
-            Layout.fillWidth: true
             spacing: 10
-
-            Button {
-                text: "Открыть"
+            CyberButton {
+                text: "ОТКРЫТЬ"
                 onClicked: fileDialog.open()
             }
-            Button {
-                text: "Сохранить"
-                highlighted: true
+            CyberButton {
+                text: "СОХРАНИТЬ"
+                accentColor: "#39ff14" // Ярко-зеленый для сохранения
                 onClicked: _backend.saveChanges(textArea.text)
             }
-            Button {
-                text: "Добавить"
+            CyberButton {
+                text: "ДОБАВИТЬ"
                 onClicked: addSectionDialog.open()
             }
-            Button {
-                text: "Удалить"
+            CyberButton {
+                text: "УДАЛИТЬ"
+                accentColor: "#ff003c" // Неоновый красный для удаления
                 enabled: textArea.text !== ""
                 onClicked: _backend.removeCurrentSection()
             }
@@ -110,6 +109,10 @@ ApplicationWindow {
                         background: null // Убираем стандартный белый фон
                         placeholderText: "Выберите секцию..."
                         placeholderTextColor: "#666"
+
+                        JsonHighlighter {
+                            textDocument: textArea.textDocument
+                        }
                     }
                 }
             }
