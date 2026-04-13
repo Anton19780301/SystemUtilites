@@ -259,6 +259,8 @@ void FileProcessor::removeSection(const QModelIndex &index) {
 
         qDebug() << "Секция" << name << "удалена. Перезапустите файл для обновления дерева.";
     }
+    qDebug() << "Index valid:" << index.isValid();
+
     file.close();
 }
 
